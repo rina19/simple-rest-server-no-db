@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+<style>
+#div1{
+	width:40%;
+	float:left;
+	padding :10px;
+	background-color:lightblue;
+}
+#div2{
+	float:left;
+	padding:5px;
+	background-color : pink;
+}
+.group{
+	margin:10px;
+	background-color: white;
+	width : 150px;
+
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script>
+	$(document).ready(function() {
+		$("#frm1").on("click", ".group", function (e) {
+			if(e.target.nodeName != "INPUT"){
+				$(this).children()[0].checked = !$(this).children()[0].checked;
+				}
+			if($(this).children()[0].checked) {
+				$("#div2").append("<p>" +$(this).children('span')[0].innerHTML+ "</p>");
+			} else {
+				var x = $("#div2 P");
+				for (i = 0; i < x.length; i++) {
+					if ($(this).children('span')[0].innerHTML == x[i].innerHTML) {
+						x[i].remove();
+						break;
+				}
+			}
+		}
+		});
+		$("#btn").on("click",function (){
+			var frt = prompt("Enter Name of the fruit : ");
+			var newFruit = '<div class="group"> <input type="checkbox"> <span>'+ frt +'</span> </div>';
+			$(this).before(newFruit);
+		});
+	});
+</script>
+</head>
+
+
+<body>
+<div id="div1">	
+	<form id ="frm1">
+		<br>
+		<div class="group"> <input type="checkbox"> <span>Apple</span> </div>
+		<div class="group"> <input type="checkbox"> <span>Mango</span> </div>
+		<div class="group"> <input type="checkbox"> <span>Grape</span> </div>
+		<div class="group"> <input type="checkbox"> <span>Strawberry</span> </div>
+		<div class="group"> <input type="checkbox"> <span>Cherry</span> </div>
+		<div> <button type="button" id ="btn">Add Fruit in the List</button> </div>
+
+	</form>
+</div>
+<div id="div2">
+</div>
+
+</body>
+</html>

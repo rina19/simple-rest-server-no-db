@@ -1,0 +1,36 @@
+<doctype! html>
+<html>
+<head>
+<script>
+	function hide(){
+		x= document.getElementsByClassName("h1");
+		for(var i =0;i<x.length;i++){
+			x[i].style.visibility="hidden";
+			}
+		}
+	function show(){
+		x= document.getElementsByClassName("h1");
+		for(var i =0;i<x.length;i++){
+			x[i].style.visibility="visible";
+			}
+		}
+	function welcome(){
+		alert("Welcome to my blog");
+	}	
+</script>	
+</head>
+<body onload="welcome()">
+	<img class="h1" src="image1.jpg " alt="google.com" style="width:128px;height:128px;">
+	<img class="h1" src="image2.jpg " alt="google.com" style="width:128px;height:128px;">
+	<img class="h1" src="image3.jpg " alt="google.com" style="width:128px;height:128px;">
+	<p class="h1">Paragraph 1</p>
+	<p class="h1">Paragraph 2</p>
+	<p class="h1">Paragraph 3</p>
+	<div class="h1">DIvision 1</div>
+	<div class="h1">DIvision 2</div>
+	<div class="h1">DIvision 3</div>
+	<br>
+	<input type = "button" value = "Hide Elements" onclick="hide()">
+	<input type = "button" value = "Show Elements" ondblclick="show()">
+</body>	
+</html>

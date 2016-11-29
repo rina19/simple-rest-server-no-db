@@ -1,0 +1,22 @@
+<doctype! html>
+<html>
+<head>
+<script>
+	function validate(chk){
+		if(chk.checked){
+			alert(chk.name + "selcted");
+			
+		}
+		}
+</script>	
+</head>
+<body>
+<form name="frm">
+<br>
+<input type="checkbox" class="mychk" name="vehicle1" value="vehicle1" onclick="validate(this);">vehicle1<br>
+<input type="checkbox" class="mychk" name="vehicle2" value="vehicle2" onclick="validate(this);">vehicle2<br>
+<input type="checkbox" class="mychk" name="vehicle3" value="vehicle3" onclick="validate(this);">vehicle3<br>
+<br>
+</form>
+</body>
+</html>

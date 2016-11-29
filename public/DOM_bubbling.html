@@ -1,0 +1,93 @@
+<doctype html>
+<html>
+<head>
+<style>
+#div1{
+	width:40%;
+	float:left;
+	padding :10px;
+}
+#div2{
+	float:left;
+	padding:10px;
+}
+</style>
+</head>
+
+<body>
+<div id="div1">	
+	<form id ="frm1">
+		<br>
+		<input type="checkbox" class="ckbox"><span>Apple</span><br><br>
+		<input type="checkbox" class="ckbox"><span>Mango</span><br><br>
+		<input type="checkbox" class="ckbox"><span>Grape</span><br><br>
+		<input type="checkbox" class="ckbox"><span>Strawberry</span><br><br>
+		<input type="checkbox" class="ckbox"><span>Cherry</span><br><br>
+		<button type ="button" id = "btn" >Add Fruit in the List</button>
+	</form>	
+</div>
+<div id="div2">
+</div>
+
+<script>
+var d = document.getElementById("div1");
+d.addEventListener("click",onChange);
+
+function onChange(event){
+	e = event.target;
+	if(e.nodeName.toLowerCase()=="input"){
+		appnrem(e);
+	}else if(e.nodeName.toLowerCase()=="span"){
+		var pr =e.previousSibling;
+		if(pr.checked == false){
+			pr.checked = true;
+		}else if(pr.checked == true){
+			pr.checked = false;
+		}
+	appnrem(pr);	
+	}else if(e.nodeName.toLowerCase()=="button"){
+		add();
+	}	
+}
+
+function appnrem(ev){
+    var nxt = ev.nextSibling;
+    var nm = nxt.innerHTML;
+    if (ev.checked){
+        var x = document.createElement("p");
+        var y = document.createTextNode(nm);
+        x.appendChild(y);
+        document.getElementById("div2").appendChild(x);
+    }else{
+        var list = document.getElementsByTagName("p");
+        for (i = 0; i < list.length; i++){
+            if (nm == list[i].innerHTML){
+                list[i].remove();
+            }
+        }
+    }
+}
+function add(){
+	var fruit = (prompt("Enter the Name of the fruit to be added : "));
+	if(fruit==null || fruit == ""){
+		return;
+	}else{
+		var frm = document.getElementById("frm1");
+		var finput = document.createElement("input");
+		finput.setAttribute("type","checkbox");
+		var bttn = document.getElementById("btn");
+		frm.insertBefore(finput,bttn);
+		var fspan = document.createElement("span");
+		var ftext = document.createTextNode(fruit);
+		fspan.appendChild(ftext);
+		frm.insertBefore(fspan,bttn);
+		var fbr = document.createElement("br");
+		frm.insertBefore(fbr,bttn);
+		var fbr1 = document.createElement("br");
+		frm.insertBefore(fbr1,bttn);
+	}
+}
+</script>
+
+</body>
+</html>

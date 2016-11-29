@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function(e){
+                //console.log(e);
+                //alert(e);
+                e.preventDefault();
+                //console.log(this);
+                $.ajax({url:"/users",
+                    method:"post",
+                    data: {"fname" : $("input")[0].value,"lname" : $("input")[1].value},
+                    success: function(result){
+                        //console.log(response);
+                        $("#div1").html(result.fname);
+                        $("#frm")[0].reset();
+                    }
+                });
+            });
+        })
+
+
+    </script>
+</head>
+<body>
+<form id="frm">
+    First Name : <input type="text" name="fname" value=""><br><br>
+    Last Name : <input type="text" name="lname" value=""><br><br>
+    Age : <input type="text" name="age" value=""><br><br>
+    <input type="submit" id="btn" value="SUBMIT">
+    <div id ="div1"></div>
+</form>
+</body>
+</html>
+

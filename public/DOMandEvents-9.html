@@ -1,0 +1,46 @@
+<doctype! html>
+<html>
+<head>
+	
+<style>	
+#container{
+background-color:linen;
+}
+</style>
+<script>
+function entertoadd(){
+	var nm =prompt("Enter Website name :  ");
+	var x=document.createElement("p");
+	var y = document.createTextNode(nm);
+	x.appendChild(y);
+	document.getElementById("container").appendChild(x);
+	return true;
+}
+function entertock(){
+	var nm =prompt("Enter Website name :  ");
+	var myNodelist = document.getElementsByTagName("p");
+	var x= 0;
+	for(i=0;i<myNodelist.length;i++){
+		if(myNodelist[i].innerHTML== nm){
+			x = 1;
+			break;}
+	}
+	if(x == 1){alert(nm + " : This website is in my favorite list !");}
+		else{alert(nm + " : This website is not in my favorite list !");}		
+}	
+</script>
+</head>
+
+
+
+<body>
+<div id="container" >My Favorite website List: </div>
+<br>	
+<input type="button" id="addurl" value="ADD LINK" onclick="entertoadd()" >
+<input type="button" id="ckurl" value="CHECK URL" onclick="entertock()">
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,36 @@
+<doctype! html>
+<html>
+<head>
+<script>
+	function sel(){
+		x= document.getElementsByClassName("mychk");
+		for(var i =0;i<x.length;i++){
+			x[i].checked="true";
+			}
+		}
+	function unsel(){
+		x= document.getElementsByClassName("mychk");
+		for(var i =0;i<x.length;i++){
+			x[i].checked=false;
+			}
+		}
+</script>	
+</head>
+<body>
+ <form>
+ <input type="checkbox" class="mychk" name="vehicle1" value="vehicle1">vehicle1<br>
+ <input type="checkbox" class="mychk" name="vehicle2" value="vehicle2">vehicle2<br>
+ <input type="checkbox" class="mychk" name="vehicle3" value="vehicle3">vehicle3<br>
+ <input type="checkbox" class="mychk" name="vehicle4" value="vehicle4">vehicle4<br>
+ <input type="checkbox" class="mychk" name="vehicle5" value="vehicle5">vehicle5<br>
+ <input type="checkbox" class="mychk" name="vehicle6" value="vehicle6">vehicle6<br>
+ <input type="checkbox" class="mychk" name="vehicle7" value="vehicle7">vehicle7<br>
+ <input type="checkbox" class="mychk" name="vehicle8" value="vehicle8">vehicle8<br>
+ <input type="checkbox" class="mychk" name="vehicle9" value="vehicle9">vehicle9<br>
+ <input type="checkbox" class="mychk" name="vehicle10" value="vehicle10">vehicle10<br>
+	
+<input type = "button" value = "Select All" onclick="sel()">
+<input type = "button" value = "unSelect All" onclick="unsel()">
+	
+</body>	
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<body>
+<form id="frm">
+    First Name : <input type="text" id="fnam" name="fname" value=""><br><br>
+    Last Name : <input type="text" id="lnam" name="lname"value=""><br><br>
+    <INPUT type="submit" id="btn" value="SUBMIT">
+    <table id="demo">
+        <tr><th>ID</th><th>First Name</th><th>Last Name</th></tr>
+    </table>
+ </form>
+
+ <script type="text/javascript">
+     document.getElementById("btn").addEventListener("click",onLoad);
+     function onLoad(e){
+         e.preventDefault();
+         var xhttp = new XMLHttpRequest();
+         xhttp.open("post","/users", true);
+         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+         var fnm = document.getElementById("fnam").value;
+         var lnm = document.getElementById("lnam").value;
+         var reqs="fname="+fnm+"&lname="+lnm;
+         xhttp.onreadystatechange = function() {
+             if (this.readyState == 4 && this.status == 200) {
+                 var response = JSON.parse(this.responseText);
+                 printData([response]);
+                 document.getElementById("frm").reset();
+             }
+         };
+         xhttp.send(reqs);
+         //getData();
+     };
+     function getData() {
+         var xhttp = new XMLHttpRequest();
+         xhttp.open("GET","/users", true);
+         xhttp.onreadystatechange = function() {
+             if (this.readyState == 4 && this.status == 200) {
+                 var response = JSON.parse(this.responseText);
+                 printData(response);
+           }
+         };
+         xhttp.send();
+     };
+     function printData(pData) {
+         var resultTable="" ;
+         for (var i = 0; i < pData.length ; i++){
+             resultTable += "<tr><td>"+pData[i].id+"</td><td>"+pData[i].fname+"</td><td>"+ pData[i].lname+"</td></tr>";
+         }
+         document.getElementById("demo").insertAdjacentHTML('beforeend',resultTable);
+     }
+     getData();
+
+ </script>
+
+</body>
+
+</html>
